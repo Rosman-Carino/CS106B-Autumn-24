@@ -1,4 +1,5 @@
 /*
+ * Author: Rosman R Cariño
  * CS106B Section Handout Test Harness: Section 8
  * ----------------------------------------------
  * These problems have been galvanized from years of
@@ -25,28 +26,48 @@ using namespace std;
  * value with the set of strings that map to it. (This is an old job
  * interview question from 2010.)
  */
-
-Map<int, Set<string>> reverseMap(Map<string, int>& map) {
+/**
+ * @brief reverseMapV1: Using the Unified Approach
+ * @param map
+ * @return
+ */
+Map<int, Set<string>> reverseMapV1(Map<string, int>& map) {
     Map<int, Set<string>> result;
-    /* TODO: Your code goes here! */
-    for (string currKey : map) {
-        if (!result.containsKey(map[currKey])) {
-            result[map[currKey]] = {};
+    for (string oldKey : map) {
+        if (!result.containsKey(map[oldKey])) {
+            result[map[oldKey]] = {};
         }
-        result[map[currKey]].add(currKey);
+        result[map[oldKey]].add(oldKey);
     }
     return result;
 }
-
+/**
+ * @brief reverseMapV2: Using If/Else Approach
+ * @param map
+ * @return
+ */
 Map<int, Set<string>> reverseMapV2(Map<string, int>& map) {
     Map<int, Set<string>> result;
-    /* TODO: Your code goes here! */
-    for (string currKey : map) {
-        if (result.containsKey(map[currKey])) {
-            result[map[currKey]].add(currKey);
+    for (string oldKey : map) {
+        if (result.containsKey(map[oldKey])) {
+            result[map[oldKey]].add(oldKey);
         } else {
-            result[map[currKey]] = {currKey};
+            result[map[oldKey]] = {oldKey};
         }
+    }
+    return result;
+}
+/**
+ * @brief reverseMapV3: Optimal Version taking advantage of Stanford Library
+ *                  Documentation. If a key is not a map, then it will auto
+ *                  initialize it.
+ * @param map
+ * @return result
+ */
+Map<int, Set<string>> reverseMapV3(Map<string, int>& map) {
+    Map<int, Set<string>> result;
+    for (string oldKey : map) {
+        result[map[oldKey]].add(oldKey);
     }
     return result;
 }
@@ -60,7 +81,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
     EXPECT_EQUAL(reversed, soln);
 
     map = {};
-    reversed = reverseMapV2(map);
+    reversed = reverseMapV3(map);
     soln = {};
     EXPECT_EQUAL(reversed, soln);
 }
@@ -86,7 +107,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
     EXPECT_EQUAL(reversed, soln);
 
     map = {};
-    reversed = reverseMapV2(map);
+    reversed = reverseMapV3(map);
     soln = {};
     EXPECT_EQUAL(reversed, soln);
 }
