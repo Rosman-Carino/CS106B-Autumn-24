@@ -52,12 +52,14 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../friendlist.cpp \
+SOURCES       = ../../escape.cpp \
+		../../friendlist.cpp \
 		../../main.cpp \
 		../../reverse.cpp \
 		../../squares.cpp \
 		../../twice.cpp 
-OBJECTS       = friendlist.o \
+OBJECTS       = escape.o \
+		friendlist.o \
 		main.o \
 		reverse.o \
 		squares.o \
@@ -292,7 +294,8 @@ DIST          = /Users/rcarino/Qt/6.7.2/macos/mkspecs/features/spec_pre.prf \
 		/Users/rcarino/Qt/6.7.2/macos/mkspecs/features/yacc.prf \
 		/Users/rcarino/Qt/6.7.2/macos/mkspecs/features/lex.prf \
 		/Users/rcarino/Qt/6.7.2/macos/mkspecs/features/silent.prf \
-		../../../../Section2.pro  ../../friendlist.cpp \
+		../../../../Section2.pro  ../../escape.cpp \
+		../../friendlist.cpp \
 		../../main.cpp \
 		../../reverse.cpp \
 		../../squares.cpp \
@@ -816,7 +819,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../../friendlist.cpp ../../main.cpp ../../reverse.cpp ../../squares.cpp ../../twice.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../escape.cpp ../../friendlist.cpp ../../main.cpp ../../reverse.cpp ../../squares.cpp ../../twice.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -869,6 +872,9 @@ compiler_lex_clean:
 compiler_clean: 
 
 ####### Compile
+
+escape.o: ../../escape.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o escape.o ../../escape.cpp
 
 friendlist.o: ../../friendlist.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendlist.o ../../friendlist.cpp

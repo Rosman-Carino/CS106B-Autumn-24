@@ -1,4 +1,5 @@
 /*
+ * Author: Rosman R Cariño
  * CS106B Section Handout Test Harness: Section 2
  * ----------------------------------------------
  * These problems have been galvanized from years of

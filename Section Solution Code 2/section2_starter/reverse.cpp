@@ -90,8 +90,8 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
 
 
     Map<string, int> map = {{"Michael", 100}, {"Pam", 500},
-                            {"Dwight", 500}, {"Kelly", 1000}
-                            };
+        {"Dwight", 500}, {"Kelly", 1000}
+    };
 
 
 
@@ -100,9 +100,9 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
 
 
     Map<int, Set<string>> soln = {{100, {"Michael"}},
-                                  {500, {"Pam", "Dwight"}},
-                                  {1000, {"Kelly"}}
-                                };
+        {500, {"Pam", "Dwight"}},
+        {1000, {"Kelly"}}
+    };
 
     EXPECT_EQUAL(reversed, soln);
 
