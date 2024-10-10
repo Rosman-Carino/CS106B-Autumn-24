@@ -86,7 +86,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
     EXPECT_EQUAL(reversed, soln);
 }
 
-PROVIDED_TEST("Simple Tests for Reversing Map") {
+PROVIDED_TEST("Section Example for Reversing Map") {
 
 
     Map<string, int> map = {{"Michael", 100}, {"Pam", 500},
