@@ -27,12 +27,31 @@ int sumOfSquaresV1(int n) {
     if (n < 0) error("Reporting error per section handout spec");
     // Base Case
     if (n == 0) return 0; // 0^2 = 0
-    // Recursive Cases
+    // Recursive Case
     int currentSquare = n * n; // Calculate the current square for this number
-    int nextSquare = sumOfSquaresV1(n - 1);
-    return currentSquare + nextSquare;
+    int nextSquare = sumOfSquaresV1(n - 1); // Capture answer from next recursive call
+    int sumOfSquare = currentSquare + nextSquare; // Aggregate current n and answer from next recursive call
+    return sumOfSquare;
 }
 
+int sumOfSquaresV2(int n) {
+    // Error Checking
+    if (n < 0) error("Reporting error per section handout spec");
+    // Base Case
+    if (n == 0) return 0; // 0^2 = 0
+    // Recursive Case
+    return (n * n) + sumOfSquaresV2(n - 1); // Add the square of this and our next recursive call
+}
+
+int sumOfSquaresV3(int n) {
+    // Error Checking
+    if (n < 0) error("Reporting error per section handout spec");
+    // Base Case
+    if (n == 0) return 0; // 0^2 = 0
+    // Recursive Case
+    int currentSquare = pow(n, 2);
+    return currentSquare + sumOfSquaresV3(n - 1);
+}
 
 /* * * * * Provided Tests Below This Point * * * * */
 
