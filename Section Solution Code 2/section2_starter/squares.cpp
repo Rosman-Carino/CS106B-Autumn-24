@@ -21,7 +21,11 @@ using namespace std;
  * Write a recursive function named sumOfSquares that takes
  * an int n and returns the sum of squares from 1 to n.
  */
-
+/**
+ * @brief sumOfSquaresV1: Step by Step Approach
+ * @param n
+ * @return
+ */
 int sumOfSquaresV1(int n) {
     // Error Checking
     if (n < 0) error("Reporting error per section handout spec");
@@ -34,6 +38,11 @@ int sumOfSquaresV1(int n) {
     return sumOfSquare;
 }
 
+/**
+ * @brief sumOfSquaresV2: Combine the logic of n^2 and recursive call in one-line
+ * @param n
+ * @return
+ */
 int sumOfSquaresV2(int n) {
     // Error Checking
     if (n < 0) error("Reporting error per section handout spec");
@@ -43,6 +52,12 @@ int sumOfSquaresV2(int n) {
     return (n * n) + sumOfSquaresV2(n - 1); // Add the square of this and our next recursive call
 }
 
+/**
+ * @brief sumOfSquaresV3: Similar to version 1, but taking advantage of pow()
+ *          method. One can make a another version of Version 2 using pow(), too
+ * @param n
+ * @return
+ */
 int sumOfSquaresV3(int n) {
     // Error Checking
     if (n < 0) error("Reporting error per section handout spec");
