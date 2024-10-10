@@ -28,7 +28,7 @@ using namespace std;
 
 Map<int, Set<string>> reverseMap(Map<string, int>& map) {
     Map<int, Set<string>> result;
-     /* TODO: Your code goes here! */
+    /* TODO: Your code goes here! */
     for (string currKey : map) {
         if (!result.containsKey(map[currKey])) {
             result[map[currKey]] = {};
@@ -38,6 +38,20 @@ Map<int, Set<string>> reverseMap(Map<string, int>& map) {
     return result;
 }
 
+Map<int, Set<string>> reverseMapV2(Map<string, int>& map) {
+    Map<int, Set<string>> result;
+    /* TODO: Your code goes here! */
+    for (string currKey : map) {
+        if (result.containsKey(map[currKey])) {
+            result[map[currKey]].add(currKey);
+        } else {
+            result[map[currKey]] = {currKey};
+        }
+    }
+    return result;
+}
+
+
 PROVIDED_TEST("Simple Tests for Reversing Map") {
     Map<string, int> map = {{"foo", 4}, {"bar", 4}, {"baz", 3}};
     Map<int, Set<string>> reversed = reverseMap(map);
@@ -46,7 +60,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
     EXPECT_EQUAL(reversed, soln);
 
     map = {};
-    reversed = reverseMap(map);
+    reversed = reverseMapV2(map);
     soln = {};
     EXPECT_EQUAL(reversed, soln);
 }
@@ -72,7 +86,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
     EXPECT_EQUAL(reversed, soln);
 
     map = {};
-    reversed = reverseMap(map);
+    reversed = reverseMapV2(map);
     soln = {};
     EXPECT_EQUAL(reversed, soln);
 }
