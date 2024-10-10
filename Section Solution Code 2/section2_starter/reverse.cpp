@@ -75,7 +75,7 @@ Map<int, Set<string>> reverseMapV3(Map<string, int>& map) {
 
 PROVIDED_TEST("Simple Tests for Reversing Map") {
     Map<string, int> map = {{"foo", 4}, {"bar", 4}, {"baz", 3}};
-    Map<int, Set<string>> reversed = reverseMap(map);
+    Map<int, Set<string>> reversed = reverseMapV1(map);
     Map<int, Set<string>> soln = {{4, {"bar", "foo"}}, {3, {"baz"}}};
 
     EXPECT_EQUAL(reversed, soln);
@@ -95,7 +95,7 @@ PROVIDED_TEST("Simple Tests for Reversing Map") {
 
 
 
-    Map<int, Set<string>> reversed = reverseMap(map);
+    Map<int, Set<string>> reversed = reverseMapV1(map);
 
 
 

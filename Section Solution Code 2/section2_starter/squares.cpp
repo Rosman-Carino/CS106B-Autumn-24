@@ -22,26 +22,25 @@ using namespace std;
  * an int n and returns the sum of squares from 1 to n.
  */
 
-int sumOfSquares(int n) {
-    // TODO: Your code here
-
+int sumOfSquaresV1(int n) {
+    // Error Checking
+    if (n < 0) error("Reporting error per section handout spec");
     // Base Case
-    if (n < 0) error("Cannot have negatives!");
-    if (n == 0) return 0;
-
+    if (n == 0) return 0; // 0^2 = 0
     // Recursive Cases
-    return sumOfSquares(n - 1) + (n * n);
-    //return 0;
+    int currentSquare = n * n; // Calculate the current square for this number
+    int nextSquare = sumOfSquaresV1(n - 1);
+    return currentSquare + nextSquare;
 }
 
 
 /* * * * * Provided Tests Below This Point * * * * */
 
 PROVIDED_TEST("Example Tests") {
-    EXPECT_EQUAL(sumOfSquares(3), 14);
-    EXPECT_EQUAL(sumOfSquares(4), 30);
-    EXPECT_EQUAL(sumOfSquares(5), 55);
-    EXPECT_EQUAL(sumOfSquares(6), 91);
+    EXPECT_EQUAL(sumOfSquaresV1(3), 14);
+    EXPECT_EQUAL(sumOfSquaresV1(4), 30);
+    EXPECT_EQUAL(sumOfSquaresV1(5), 55);
+    EXPECT_EQUAL(sumOfSquaresV1(6), 91);
 }
 
 
