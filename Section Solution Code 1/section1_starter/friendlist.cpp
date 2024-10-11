@@ -1,4 +1,5 @@
 /*
+ * Author: Rosman R Cariño
  * CS106B Section Handout Test Harness: Section 1
  * ----------------------------------------------
  * These problems have been galvanized from years of
@@ -95,7 +96,35 @@ Map<string, Set<string>> friendsListV1(string filename){
     return friendsMap;
 }
 
+Map<string, Set<string>> friendsListV2(string filename){
+    // Step 1: Read the file and populate it into a Vector of lines
+    ifstream in;
+    Vector<string> lines;
+    if (openFile(in, filename)) { // openFile is similar to Python's open()
+        lines = readLines(in);
+    }
+    // Step 2 Declare our Map where
+    // Key: Person, Value: Set of Friends(string)
+    Map<string, Set<string>> friendsMap;
 
+    // Step 3: Iterate through 'lines;
+    for (string line : lines) {
+        // Need to call stringSplit() to tokenize each string by the
+        // delimiter/seperator which is a space " "
+        Vector<string> people = stringSplit(line, " ");
+        string person1 = people[0];
+        string person2 = people[1];
+
+        /*Per the documentation:  If key is already present in the map, this
+        function returns a reference to its associated value. If key is not
+        present in the map, a new entry is created whose value is set to the
+        default for the value type.
+        */
+        friendsMap[person1].add(person2);
+        friendsMap[person2].add(person1);
+    }
+    return friendsMap;
+}
 
 
 
@@ -106,6 +135,6 @@ PROVIDED_TEST("provided test case from handout for friendList") {
     soln["Abby"] = {"Barney", "Clyde"};
     soln["Barney"] = {"Abby"};
     soln["Clyde"] = {"Abby"};
-    EXPECT_EQUAL(soln, friendsListV1("res/buddies.txt"));
+    EXPECT_EQUAL(soln, friendsListV2("res/buddies.txt"));
 }
 
