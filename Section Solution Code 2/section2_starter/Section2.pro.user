@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 14.0.1, 2024-10-10T16:44:40. -->
+<!-- Written by QtCreator 14.0.1, 2024-10-10T17:11:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -243,14 +243,14 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section/Section 2/Submission/section2_starter/Section2.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section/Section 2/Submission/section2_starter/Section2.pro</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Section22</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section Solutions Code/Section Solution Code 2/section2_starter/Section2.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section Solutions Code/Section Solution Code 2/section2_starter/Section2.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section/Section 2/Submission/section2_starter/Section2.app/Contents/MacOS</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/rcarino/Documents/Section Leading/CS106B Autumn 2024/Section Solutions Code/Section Solution Code 2/section2_starter/Section2.app/Contents/MacOS</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
