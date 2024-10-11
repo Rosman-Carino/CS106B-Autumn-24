@@ -31,6 +31,14 @@ using namespace std;
  * by a single space. You do not have to worry about malformed entries.
  */
 
+
+/**
+ * @brief friendListReference: This example is primarily for folks that took
+ *          CS106A because we tell them to "pull out" an ADT if its a value
+ *          in their dictionary.
+ * @param filename
+ * @return
+ */
 Map<string, Set<string>> friendListReference(string filename){
     // Step 1: Read the file and populate it into a Vector of lines
     ifstream in;
@@ -60,7 +68,11 @@ Map<string, Set<string>> friendListReference(string filename){
     return friendsMap;
 }
 
-
+/**
+ * @brief friendsListV1: Using Unified Approach
+ * @param filename
+ * @return
+ */
 Map<string, Set<string>> friendsListV1(string filename){
     // Step 1: Read the file and populate it into a Vector of lines
     ifstream in;
@@ -96,6 +108,11 @@ Map<string, Set<string>> friendsListV1(string filename){
     return friendsMap;
 }
 
+/**
+ * @brief friendsListV2: Taking advantage of default key from the docs.
+ * @param filename
+ * @return
+ */
 Map<string, Set<string>> friendsListV2(string filename){
     // Step 1: Read the file and populate it into a Vector of lines
     ifstream in;
@@ -126,7 +143,11 @@ Map<string, Set<string>> friendsListV2(string filename){
     return friendsMap;
 }
 
-
+/**
+ * @brief friendsListV3: Taking advantage of the '+=' operator
+ * @param filename
+ * @return
+ */
 Map<string, Set<string>> friendsListV3(string filename){
     // Step 1: Read the file and populate it into a Vector of lines
     ifstream in;
