@@ -79,21 +79,36 @@ int countWaysToEscapeV2(Grid<bool>& maze, GridLocation location) {
 }
 
 
+int countWaysToEscapeV3(Grid<bool>& maze, GridLocation location) {
+    // Base Case: Failure 1 -> Current Location is Out-of-Bounds
+    // or  Failure 2 -> Current Location is a Wall
+    if (!maze.inBounds(location) ||
+        !maze[location]) return 0;
+    // Base: Success - At the Exit
+    if (location == GridLocation{maze.numRows() - 1,
+                                 maze.numCols() -1}) {
+        return 1;
+    }
+    // Recursive Calls: Choice 1 - Go South or Choice 2 - Go East
+    return countWaysToEscapeV3(maze, {location.row + 1, location.col})
+           + countWaysToEscapeV3(maze, {location.row, location.col + 1});
+}
+
 
 
 /* * * * * Provided Tests Below This Point * * * * */
 PROVIDED_TEST("Test ways to escape") {
     Grid<bool> maze = {{true, true, true}, {true, true, true}};
-    EXPECT_EQUAL(countWaysToEscapeV2(maze, {0,0}), 3);
+    EXPECT_EQUAL(countWaysToEscapeV3(maze, {0,0}), 3);
 
     maze = {{true, true, true}, {true, true, false}};
-    EXPECT_EQUAL(countWaysToEscapeV2(maze, {0,0}), 0);
+    EXPECT_EQUAL(countWaysToEscapeV3(maze, {0,0}), 0);
 
     maze = {{true, true, true}, {true, false, true}};
-    EXPECT_EQUAL(countWaysToEscapeV2(maze, {0,0}), 1);
+    EXPECT_EQUAL(countWaysToEscapeV3(maze, {0,0}), 1);
 
     maze = {{true, true, true}, {false, true, true}};
-    EXPECT_EQUAL(countWaysToEscapeV2(maze, {0,0}), 2);
+    EXPECT_EQUAL(countWaysToEscapeV3(maze, {0,0}), 2);
 
     Grid<bool> longMaze {
         {true, true, true, true},
@@ -101,13 +116,13 @@ PROVIDED_TEST("Test ways to escape") {
         {true, true, true, true},
         {true, true, true, true}
     };
-    EXPECT_EQUAL(countWaysToEscapeV2(longMaze, {0,0}), 20);
+    EXPECT_EQUAL(countWaysToEscapeV3(longMaze, {0,0}), 20);
 
     Grid<bool> simpleMaze {
         {true, true, false},
         {true, true, true}
     };
-    EXPECT_EQUAL(countWaysToEscapeV2(simpleMaze, {0,0}), 2);
+    EXPECT_EQUAL(countWaysToEscapeV3(simpleMaze, {0,0}), 2);
 
 }
 
