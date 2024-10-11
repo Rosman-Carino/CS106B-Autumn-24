@@ -30,6 +30,12 @@ using namespace std;
 
 
 
+/**
+ * @brief countWaysToEscapeV1: Step-by step walkthrough this function.
+ * @param maze
+ * @param location
+ * @return
+ */
 int countWaysToEscapeV1(Grid<bool>& maze, GridLocation location) {
     // Base Case: Failure 1 -> Current Location is Out-of-Bounds
     if (!maze.inBounds(location)) {
@@ -56,7 +62,13 @@ int countWaysToEscapeV1(Grid<bool>& maze, GridLocation location) {
     return total;
 }
 
-
+/**
+ * @brief countWaysToEscapeV2: Here we combine both failure cases into one
+ *              statement using an OR condition.
+ * @param maze
+ * @param location
+ * @return
+ */
 int countWaysToEscapeV2(Grid<bool>& maze, GridLocation location) {
     // Base Case: Failure 1 -> Current Location is Out-of-Bounds
     // or  Failure 2 -> Current Location is a Wall
@@ -78,7 +90,13 @@ int countWaysToEscapeV2(Grid<bool>& maze, GridLocation location) {
     return total;
 }
 
-
+/**
+ * @brief countWaysToEscapeV3: A condense solution. We are combining
+ *      both descions/choices for each recursive call.
+ * @param maze
+ * @param location
+ * @return
+ */
 int countWaysToEscapeV3(Grid<bool>& maze, GridLocation location) {
     // Base Case: Failure 1 -> Current Location is Out-of-Bounds
     // or  Failure 2 -> Current Location is a Wall
