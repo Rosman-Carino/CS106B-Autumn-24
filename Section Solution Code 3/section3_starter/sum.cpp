@@ -173,14 +173,93 @@ bool canMakeSumV4(Vector<int>& values, int target) {
 
 }
 
+/**
+ * @brief canMakeSumV5: Here we remove from `values`, but because it's passed
+ *          by value there is no need to place it back in.
+ * @param values
+ * @param target
+ * @return
+ */
+bool canMakeSumV5(Vector<int> values, int target) {
+    if (values.isEmpty()) {
+        if (target == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    int currValue = values.remove(0);
+    bool with = canMakeSumV5(values, target - currValue);
+    bool without = canMakeSumV5(values, target);
+    return with || without;
+}
+
+bool canMakeSumHelper(Vector<int>& values, int target, int index) {
+    // Prune Case
+    if (target < 0) {
+        return false; // We overshot so we can stop exploring this path
+    }
+
+    // Base Case
+    if (index >= values.size()) {
+        // Success Case
+        if (target == 0) {
+            return true;
+        } else {
+            // Failure Case
+            return false;
+        }
+    }
+    // Recursive Cases
+    // Choose
+    int currValue = values[index];
+    bool withValue = canMakeSumHelper(values, target - currValue, index + 1);
+    bool withoutValue = canMakeSumHelper(values, target, index + 1);
+    // There is no need to to put `currValue` back into `values` because
+    // we did not remove it from `values`
+    return withValue || withoutValue;
+
+}
+
+/**
+ * @brief canMakeSum: This implementation uses a helper function where we
+ *                  add an additional parameter `index` to traverse
+ *                  through `value` without removing elements from `values`.
+ * @param values
+ * @param target
+ * @return
+ */
+bool canMakeSum(Vector<int>& values, int target) {
+    return canMakeSumHelper(values, target, 0);
+
+}
+
 /* * * * * Provided Tests Below This Point * * * * */
 
 PROVIDED_TEST("Provided Test: Positive example from handout.") {
     Vector<int> nums = {1,1,2,3,5};
-    EXPECT(canMakeSumV4(nums, 9));
+    EXPECT(canMakeSum(nums, 9));
 }
 
 PROVIDED_TEST("Provided Test: Negative example from handout") {
     Vector<int> nums = {1,4,5,6};
-    EXPECT(!canMakeSumV4(nums, 8));
+    EXPECT(!canMakeSum(nums, 8));
+}
+
+PROVIDED_TEST("Provided Test: Section Example") {
+    Vector<int> nums = {1,1,2};
+    EXPECT(canMakeSum(nums, 3));
+}
+
+PROVIDED_TEST("Stress Test: Additional Examples") {
+    Vector<int> nums = {1, 1, 2, 3, 5};
+    EXPECT(canMakeSum(nums, 9));
+    nums = {1, 4, 5, 6};
+    EXPECT(!canMakeSum(nums, 8));
+    nums = {7, 30, 8, 22, 6, 1, 14};
+    EXPECT(canMakeSum(nums, 22));
+    EXPECT(!canMakeSum(nums, 19));
+    nums = {5, 30, 15, 13, 8};
+    EXPECT(!canMakeSum(nums, 42));
+    EXPECT(canMakeSum(nums, 41));
 }
