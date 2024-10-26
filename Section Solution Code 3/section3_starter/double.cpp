@@ -40,14 +40,27 @@ void doubleStackV1(Stack<int> & s) {
     s.push(current);
 }
 
-void doubleStack(Stack<int> & s) {
+void doubleStackV2(Stack<int> & s) {
     if (!s.isEmpty()) {
         int topOfStack = s.peek();
         s.pop(); // Remove top element and make the problem smaller
-        doubleStack(s);
+        doubleStackV2(s);
         s.push(topOfStack);
         s.push(topOfStack);
     }
+}
+
+void doubleStackV1(Stack<int> & s) {
+    // Base Case
+    if (s.isEmpty()) {
+        return;
+    }
+    // Recursive Case
+    int current = s.pop(); // Remove the top element
+    doubleStackV1(s); // We made the problem smaller
+    // Push the values back on
+    s.push(current);
+    s.push(current);
 }
 
 /* * * * * Provided Tests Below This Point * * * * */
