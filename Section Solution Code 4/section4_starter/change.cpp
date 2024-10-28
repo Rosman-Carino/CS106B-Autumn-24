@@ -117,6 +117,31 @@ int fewestCoinsForV3(int cents, Set<int>& coins) {
 
 
 
+int fewestCoinsForHelper(int cents, Set<int>& coins, int numCoinsSoFar) {
+    // Base Case: Failure Case - We overshot
+    if (cents < 0) { // Overshot
+        return -1;
+    }
+    // Base Case: We were able to Make Change for `cents`. If
+    // we need to make 0 cents of change we return 0 coins.
+    if (cents == 0) {
+        return 0;
+    }
+    for (int coin : coins) {
+        int currFewestCoins = fewestCoinsForHelper(cents - coin, coins, numCoinsSoFar) + 1;
+        // If we do not overshoot then let's perform a min
+        // operation.
+        if (currFewestCoins != -1) {
+            numCoinsSoFar = min(currFewestCoins, numCoinsSoFar);
+        }
+    }
+    return numCoinsSoFar;
+}
+
+int fewestCoinsFor(int cents, Set<int>& coins) {
+    return fewestCoinsForHelper(cents, coins, cents + 1);
+}
+
 
 /* * * * * Provided Tests Below This Point * * * * */
 

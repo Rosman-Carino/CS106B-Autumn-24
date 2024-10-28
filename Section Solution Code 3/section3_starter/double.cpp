@@ -50,9 +50,13 @@ void doubleStackV2(Stack<int> & s) {
     }
 }
 
-void doubleStackV1(Stack<int> & s) {
+void doubleStackV3(Stack<int> & s) {
     // Base Case
     if (s.isEmpty()) {
+        return;
+    }
+    if (s.size() == 1) {
+        s.push(s.peek());
         return;
     }
     // Recursive Case
@@ -68,8 +72,26 @@ void doubleStackV1(Stack<int> & s) {
 PROVIDED_TEST("Provided Test: Examples from handout.") {
     Stack<int> input = {1, 2, 3};
     Stack<int> output = {1, 1, 2, 2, 3, 3};
-    doubleStack(input);
+    doubleStackV3(input);
+    EXPECT_EQUAL(input, output);
+}
+PROVIDED_TEST("Provided Test: Size is 2.") {
+    Stack<int> input = {1, 2};
+    Stack<int> output = {1, 1, 2, 2};
+    doubleStackV3(input);
     EXPECT_EQUAL(input, output);
 }
 
+PROVIDED_TEST("Provided Test: Size is 1.") {
+    Stack<int> input = {1};
+    Stack<int> output = {1, 1};
+    doubleStackV3(input);
+    EXPECT_EQUAL(input, output);
+}
 
+PROVIDED_TEST("Provided Test: Size is 0.") {
+    Stack<int> input = {};
+    Stack<int> output = {};
+    doubleStackV3(input);
+    EXPECT_EQUAL(input, output);
+}
