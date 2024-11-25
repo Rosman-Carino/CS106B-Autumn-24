@@ -115,31 +115,37 @@ int fewestCoinsForV3(int cents, Set<int>& coins) {
     return fewestCoins;
 }
 
-
-
-int fewestCoinsForHelper(int cents, Set<int>& coins, int numCoinsSoFar) {
+int fewestCoinsForHelper(int cents, Set<int>& coins, int numCoinsSoFar, int globalMinCoins) {
     // Base Case: Failure Case - We overshot
+    //cout << "Cents: " << cents << endl;
     if (cents < 0) { // Overshot
         return -1;
     }
     // Base Case: We were able to Make Change for `cents`. If
     // we need to make 0 cents of change we return 0 coins.
     if (cents == 0) {
-        return 0;
+        return numCoinsSoFar;
     }
+    // Recursive Cases
     for (int coin : coins) {
-        int currFewestCoins = fewestCoinsForHelper(cents - coin, coins, numCoinsSoFar) + 1;
+        int currFewestCoins = fewestCoinsForHelper(cents - coin, coins,
+                                        numCoinsSoFar + 1, globalMinCoins);
+        //cout << "Min Coins: " << minCoins << endl;
+        //cout << "Current Fewest Coins: " << currFewestCoins << endl;
         // If we do not overshoot then let's perform a min
         // operation.
         if (currFewestCoins != -1) {
-            numCoinsSoFar = min(currFewestCoins, numCoinsSoFar);
+            globalMinCoins = min(globalMinCoins, currFewestCoins);
         }
+        //cout << "Min Coins After Update: " << minCoins << endl;
     }
-    return numCoinsSoFar;
+    return globalMinCoins;
 }
 
+
+
 int fewestCoinsFor(int cents, Set<int>& coins) {
-    return fewestCoinsForHelper(cents, coins, cents + 1);
+    return fewestCoinsForHelper(cents, coins, 0, cents + 1);
 }
 
 
@@ -147,29 +153,29 @@ int fewestCoinsFor(int cents, Set<int>& coins) {
 
 PROVIDED_TEST("Provided Test: US Currency System") {
     Set<int> coins = {1, 5, 10, 25, 50};
-    EXPECT_EQUAL(fewestCoinsForV3(31, coins), 3);
+    EXPECT_EQUAL(fewestCoinsFor(31, coins), 3);
 }
 
 PROVIDED_TEST("Provided Test: Recursia Currency System") {
     Set<int> coins = {1, 12, 14, 63};
-    EXPECT_EQUAL(fewestCoinsForV3(24, coins), 2);
+    EXPECT_EQUAL(fewestCoinsFor(24, coins), 2);
 }
 
 PROVIDED_TEST("Section Example") {
     Set<int> coins = {1, 10, 25};
-    EXPECT_EQUAL(fewestCoinsForV3(31, coins), 4);
-    EXPECT_EQUAL(fewestCoinsForV3(0, coins), 0);
+    EXPECT_EQUAL(fewestCoinsFor(31, coins), 4);
+    EXPECT_EQUAL(fewestCoinsFor(0, coins), 0);
 }
 
 PROVIDED_TEST("Additional Examples") {
     Set<int> coins = {1, 6, 10};
-    EXPECT_EQUAL(fewestCoinsForV3(1, coins), 1);
-    EXPECT_EQUAL(fewestCoinsForV3(11, coins), 2);
-    EXPECT_EQUAL(fewestCoinsForV3(12, coins), 2);
+    EXPECT_EQUAL(fewestCoinsFor(1, coins), 1);
+    EXPECT_EQUAL(fewestCoinsFor(11, coins), 2);
+    EXPECT_EQUAL(fewestCoinsFor(12, coins), 2);
     Set<int> coinsEx2 = {1, 5, 10};
-    EXPECT_EQUAL(fewestCoinsForV3(1, coinsEx2), 1);
+    EXPECT_EQUAL(fewestCoinsFor(1, coinsEx2), 1);
     Set<int> coinsEx3 = {1, 25};
-    EXPECT_EQUAL(fewestCoinsForV3(31, coinsEx3), 7);
+    EXPECT_EQUAL(fewestCoinsFor(31, coinsEx3), 7);
 }
 
 

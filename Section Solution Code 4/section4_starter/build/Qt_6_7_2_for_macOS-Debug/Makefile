@@ -15,9 +15,9 @@ EQ            = =
 CC            = @echo compiling $< && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = @echo compiling $< && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 DEFINES       = -Dmain=qMain -DqMain=studentMain -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=11.0 -Wall -Wextra -Werror=return-type -Werror=uninitialized -Wunused-parameter -Wmissing-field-initializers -Wno-old-style-cast -Wno-sign-compare -Wno-sign-conversion -Wno-unused-const-variable -Wempty-init-stmt -Wignored-qualifiers $(DEFINES)
-INCPATH       = -I../../../section4_starter -I. -I../../../section4_starter -I/Users/rcarino/Library/Application\ Support/cs106/include -I/Users/rcarino/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtGui.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtNetwork.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/mkspecs/macx-clang -F/Users/rcarino/Qt/6.7.2/macos/lib
+CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=11.0 -Wall -Wextra -Werror=return-type -Werror=uninitialized -Wunused-parameter -Wmissing-field-initializers -Wno-old-style-cast -Wno-sign-compare -Wno-sign-conversion -Wno-unused-const-variable -Wempty-init-stmt -Wignored-qualifiers $(DEFINES)
+INCPATH       = -I../../../section4_starter -I. -I../../../section4_starter -I/Users/rcarino/Library/Application\ Support/cs106/include -I/Users/rcarino/Qt/6.7.2/macos/lib/QtWidgets.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtGui.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtNetwork.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/rcarino/Qt/6.7.2/macos/mkspecs/macx-clang -F/Users/rcarino/Qt/6.7.2/macos/lib
 QMAKE         = /Users/rcarino/Qt/6.7.2/macos/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -39,7 +39,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = Section41.0.0
 DISTDIR = /Users/rcarino/Documents/Section\ Leading/CS106B\ Autumn\ 2024/Section\ Solutions\ Code/Section\ Solution\ Code\ 4/section4_starter/build/Qt_6_7_2_for_macOS-Debug/.tmp/Section41.0.0
 LINK          = @echo linking $@ && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-LFLAGS        = -L'/Users/rcarino/Library/Application Support/cs106/lib' -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=11.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/rcarino/Qt/6.7.2/macos/lib
+LFLAGS        = -L'/Users/rcarino/Library/Application Support/cs106/lib' -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=11.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/rcarino/Qt/6.7.2/macos/lib
 LIBS          = $(SUBLIBS) -F/Users/rcarino/Qt/6.7.2/macos/lib -lcs106 -lpthread -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtNetwork -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
@@ -309,7 +309,7 @@ TARGET        = ../../../section4_starter/Section4.app/Contents/MacOS/Section4
 
 ####### Custom Variables
 EXPORT_QMAKE_MAC_SDK = macosx
-EXPORT_QMAKE_MAC_SDK_VERSION = 15.0
+EXPORT_QMAKE_MAC_SDK_VERSION = 15.1
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
 EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = x86_64 arm64
