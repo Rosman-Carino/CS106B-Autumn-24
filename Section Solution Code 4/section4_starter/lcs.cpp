@@ -22,8 +22,24 @@ using namespace std;
  */
 
 string longestCommonSubsequence(string s1, string s2) {
-    // TODO: Your code here
-    return "";
+    // Base Case: One of the strings is empty
+    if (s1.empty() || s2.empty()) return "";
+
+    // Recursive Cases
+    if (s1[0] == s2[0]) { // Same Character
+        return s1[0] + longestCommonSubsequence(s1.substr(1),
+                                               s2.substr(1));
+    } else {
+        // We have 2 choices to make here
+        string s1Choice = longestCommonSubsequence(s1, s2.substr(1));
+        string s2Choice = longestCommonSubsequence(s1.substr(1), s2);
+        // Perform Max Comparison
+        if (s1Choice.length() >= s2Choice.length()) {
+            return s1Choice;
+        } else {
+            return s2Choice;
+        }
+    }
 }
 
 
@@ -45,3 +61,8 @@ PROVIDED_TEST("Provided Test: Sea Shells") {
     EXPECT_EQUAL(longestCommonSubsequence("she sells", "seashells"), "sesells");
 }
 
+PROVIDED_TEST("Provided Test: Section Examples") {
+    EXPECT_EQUAL(longestCommonSubsequence("cap", "cup"), "cp");
+    EXPECT_EQUAL(longestCommonSubsequence("ipad", "imac"), "ia");
+
+}
