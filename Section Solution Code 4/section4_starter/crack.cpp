@@ -121,7 +121,7 @@ string crackPasswordHelperV3(int n, string soFar) {
     for (char letter = 'a'; letter <= 'z'; letter++) {
         // Choose: Choose this `letter` (Lowercase)
         soFar += letter;
-        string triedPassword = crackPasswordHelperV2(n - 1, soFar);
+        string triedPassword = crackPasswordHelperV3(n - 1, soFar);
         if (triedPassword != "") {
             return triedPassword;
         }
@@ -133,7 +133,7 @@ string crackPasswordHelperV3(int n, string soFar) {
         char upperLetter = toUpperCase(letter);
         // Choose: Choose this `letter` (Uppercase)
         soFar += upperLetter;
-        triedPassword = crackPasswordHelperV2(n - 1, soFar);
+        triedPassword = crackPasswordHelperV3(n - 1, soFar);
         if (triedPassword != "") {
             return triedPassword;
         }
@@ -149,7 +149,7 @@ string crackingPasswords(int n){
     if (n < 0) {
         throw n;
     }
-    return crackPasswordHelperV1(n, "");
+    return crackPasswordHelperV3(n, "");
 }
 
 
